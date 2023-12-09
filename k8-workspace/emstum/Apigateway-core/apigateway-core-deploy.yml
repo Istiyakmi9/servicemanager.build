@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apigateway-core-pod
+  labels:
+    app: apigateway-core-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apigateway-core-pod
+  template:
+    metadata:
+      labels:
+        app: apigateway-core-pod
+    spec:
+      containers:
+        - name: apigateway-core-pod
+          image: istiyaqmi9/apigateway.core:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

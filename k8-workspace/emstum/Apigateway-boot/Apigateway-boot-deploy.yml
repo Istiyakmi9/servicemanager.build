@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apigateway-boot-pod
+  labels:
+    app: apigateway-boot-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apigateway-boot-pod
+  template:
+    metadata:
+      labels:
+        app: apigateway-boot-pod
+    spec:
+      containers:
+        - name: apigateway
+          image: istiyaqmi9/ems_apigateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8090

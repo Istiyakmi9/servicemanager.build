@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice-pod
+  labels:
+    app: emailservice-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emailservice-pod
+  template:
+    metadata:
+      labels:
+        app: emailservice-pod
+    spec:
+      containers:
+        - name: emailservice-pod
+          image: istiyaqmi9/emailrequest-service:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

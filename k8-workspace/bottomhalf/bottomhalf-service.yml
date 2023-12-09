@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bottomhalf-service
+spec:
+  selector:
+    app: bottomhalf-pod
+  ports:
+    - protocol: TCP
+      port: 8190
+      targetPort: 80
+  type: LoadBalancer

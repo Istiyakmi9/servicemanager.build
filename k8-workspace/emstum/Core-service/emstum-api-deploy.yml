@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emstum-api-pod
+  labels:
+    app: emstum-api-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emstum-api-pod
+  template:
+    metadata:
+      labels:
+        app: emstum-api-pod
+    spec:
+      containers:
+        - name: emstum-api-pod
+          image: istiyaqmi9/onlinedatabuilder:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /app/appsettings.json
+              name: appsetting-volume
+            - mountPath: /app/ExceptionFiles
+              name: exception-file-volume
+            - mountPath: /app/Documents
+              name: document-volume
+      volumes:
+        - name: appsetting-volume
+          hostPath:
+            path: /root/ws/emstum/Core-service/appsettings.json
+        - name: exception-file-volume
+          persistentVolumeClaim:
+            claimName: exception-files-pvc
+        - name: document-volume
+          persistentVolumeClaim:
+            claimName: document-pvc
