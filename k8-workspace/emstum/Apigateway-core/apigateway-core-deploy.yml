@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: apigateway-core-pod
-          image: istiyaqmi9/apigateway.core:latest
+          image: istiyaqmi9/apigateway.core:staging
           imagePullPolicy: Always
           ports:
             - containerPort: 80

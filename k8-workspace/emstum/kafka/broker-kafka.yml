@@ -43,21 +43,3 @@ spec:
       #     - name: kafka-volume
       #       hostPath:
       #         path: /home/bot/ems/kafka-k8s/kafka-logs
-
---- 
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: kafka-broker-service
-  namespace: kafka
-  labels:
-    app: kafka-broker-service
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 9092
-    protocol: TCP
-    targetPort: 9092
-  selector:
-    app: kafka-broker
